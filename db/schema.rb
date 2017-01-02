@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170102191730) do
   create_table "rules", force: :cascade do |t|
     t.integer  "role_id",    null: false
     t.string   "action",     null: false
-    t.string   "subject",    null: false
+    t.string   "resource",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -19,18 +19,18 @@ class User < ActiveRecord::Base
   def remove_role name
     role = Role.find_by_name(name.to_s)
     raise "#{name} role not found" if role.nil?
-    roles -= [role]
+    roles.delete(role)
   end
 
-  def can? action, subject
+  def can? action, resource
     flag = false
     rules.reverse.each do |rule|
-      flag = true if rule.matches_action?(action.to_s) && rule.matches_subject?(subject.to_s)
+      flag = true if rule.matches_action?(action) && rule.matches_resource?(resource)
     end
     flag
   end
 
-  def cannot? action, subject
-    !can? action, subject
+  def cannot? action, resource
+    !can? action, resource
   end
 end

@@ -3,7 +3,7 @@ class CreateRules < ActiveRecord::Migration
     create_table :rules do |t|
       t.belongs_to :role, null: false
       t.string :action, null: false
-      t.string :subject, null: false
+      t.string :resource, null: false
 
       t.timestamps null: false
     end
